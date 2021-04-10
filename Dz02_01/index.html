@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width= , initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content= "ie=edge">
+	<title>Index</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+ <script>
+function prikaziRezultat(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", "student_search.php?s=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+
+<body>
+
+	<div id="wrapper">
+	
+	<input type="checkbox" id=toggle>
+	
+		<div id="header">
+			<label for="toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+			
+			</label>
+		</div>
+		<div id="content">
+		<p><b>Počnite pisati ime ili prezime studenta:</b></p>
+		<form> 
+		Student: <input type="text" onkeyup="prikaziRezultat(this.value)">
+		</form>
+		<p>Prijedlozi:<br> <br> <span id="txtHint"></span></p>
+		</div>
+		
+		<div id="menu">
+			<ul>
+			<li><a href="#">link 1 </a></li>
+			</ul>
+			<ul>
+			<li><a href="#">link 2 </a></li>
+			</ul>
+			<ul>
+			<li><a href="#">link 3 </a></li>
+			</ul>
+		</div>
+	<footer>footer</footer>
+</body>
+
+</html>
