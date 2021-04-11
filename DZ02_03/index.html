@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang ="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width= , initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content= "ie=edge">
+	<title>Index</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	fetch('student_data.php').then(function(response) {
+                return response.text()
+            
+        })
+        .then(function(response) {
+            $('#output').html(response);
+			$('#output').css('display', 'block');
+              });
+       $("#search").keyup(function(){
+          var query = $(this).val();
+          if (query != "") {
+            fetch("student_search.php?s=" + query,{
+              method: 'GET',
+            }).then(function(response) {
+                return response.text()
+            
+        }).then(function(data){
+ 
+                $('#output').html(data);
+                $('#output').css('display', 'block');
+ 
+                $("#search").focusout(function(){
+                    $('#output').css('display', 'none');
+                });
+                $("#search").focusin(function(){
+                    $('#output').css('display', 'block');
+                });
+              });
+          } else {
+          fetch('student_data.php').then(function(response) {
+                return response.text()
+            
+        })
+        .then(function(response) {
+            $('#output').html(response);
+			$('#output').css('display', 'block');
+              });
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+	<div id="wrapper">
+	
+	<input type="checkbox" id=toggle>
+	
+		<div id="header">
+			<label for="toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+			
+			</label>
+		</div>
+		<div id="content">
+		<p><b>Počnite pisati ime ili prezime studenta:</b></p>
+		<form> 
+		Student: <input type="text" name="search" id="search" autocomplete="off" placeholder="Trazi....">
+		</form>
+		<p>Prijedlozi:<br> <br> <div id="output"></div></p>
+		</div>
+		
+		<div id="menu">
+			<ul>
+			<li><a href="#">link 1 </a></li>
+			</ul>
+			<ul>
+			<li><a href="#">link 2 </a></li>
+			</ul>
+			<ul>
+			<li><a href="#">link 3 </a></li>
+			</ul>
+		</div>
+	<footer>footer</footer>
+</body>
+
+</html>
