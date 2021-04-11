@@ -12,7 +12,12 @@
  <script>
 function prikaziRezultat(str) {
     if (str.length == 0) { 
-        document.getElementById("txtHint").innerHTML = "";
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+		}
+		xmlhttp.open("GET", "student_data.php", true);
+        xmlhttp.send();
         return;
     } else {
         var xmlhttp = new XMLHttpRequest();
@@ -25,10 +30,20 @@ function prikaziRezultat(str) {
         xmlhttp.send();
     }
 }
+function listuser() {  
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+		}
+		xmlhttp.open("GET", "student_data.php", true);
+        xmlhttp.send();
+        return;
+    
+}
 </script>
 </head>
 
-<body>
+<body onload="listuser();">
 
 	<div id="wrapper">
 	
