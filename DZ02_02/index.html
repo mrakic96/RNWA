@@ -11,7 +11,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+    
+	$(document).ready(function(){
+	
 	$.ajax({
               url: 'student_data.php',
               dataType: "html",              
@@ -36,7 +38,17 @@
                 $('#output').css('display', 'block');
  
                 $("#search").focusout(function(){
-                    $('#output').css('display', 'none');
+                    $.ajax({
+              url: 'student_search.php',              
+			  method: 'POST',
+			  data: {query:query},
+              success: function(data){
+ 
+                $('#output').html(data);
+                $('#output').css('display', 'block');
+ 
+              }
+            });
                 });
                 $("#search").focusin(function(){
                     $('#output').css('display', 'block');
@@ -61,7 +73,7 @@
   </script>
 </head>
 
-<body>
+<body id="target">
 
 	<div id="wrapper">
 	
