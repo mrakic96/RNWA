@@ -65,7 +65,7 @@ echo "<br>Konekcija nije uspostavljena<br>";
 }
 
 
-//echo $hint === "" ? "Nema prijedloga" : $hint;
+
 
 ?>
 </body>
