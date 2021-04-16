@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Konverzija valuta</title>
+	<style type="text/css">
+		body, form{
+			margin-left: 40px;
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<b style="margin-left:40px;"><font size="4">Konverzija valuta (BAM/EUR)</font></b>
+	<form name="form" method="post" action="client.php">
+		<p>Unesite vrijednost: <br> <br><input style="width: 115px;" name="value" type="text" id="value" size="15"></p>
+		<select name="valuta" id="valuta">
+		 	<option value="uEUR">Pretvori u EUR</option>
+		 	<option value="uBAM">Pretvori u BAM</option>
+		</select>
+		<p><input style="width: 100px; background-color: yellow;" type="submit" name="Submit" value="Convert"></p>
+	</form>
+<body>
+</html>
