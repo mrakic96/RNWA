@@ -1,0 +1,98 @@
+#WSDL REQUEST
+public class WebService2 : System.Web.Services.WebService
+    {
+        public static DataTable SendQuerry(string querry)
+        {
+            string connString = "SERVER=localhost" + ";" +
+                "DATABASE=collage_database;" +
+                "UID=root;" +
+                "PASSWORD=;";
+
+            MySqlConnection cnMySQL = new MySqlConnection(connString);
+
+            MySqlCommand cmdMySQL = cnMySQL.CreateCommand();
+
+            MySqlDataReader reader;
+
+            cmdMySQL.CommandText = querry;
+
+            cnMySQL.Open();
+
+            reader = cmdMySQL.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+
+            cnMySQL.Close();
+
+            return dt;
+
+        }
+
+        [WebMethod]
+        public DataTable getStudentByNumber(string studentNumber)
+        {
+            string querry = "select * from students where roll_num=" + studentNumber;
+            return SendQuerry(querry);
+        }
+    }
+#WSDL RESPONSE
+<DataTable>
+<xs:schema id="NewDataSet">
+<xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="students" msdata:UseCurrentLocale="true">
+<xs:complexType>
+<xs:choice minOccurs="0" maxOccurs="unbounded">
+<xs:element name="students">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="roll_num" msdata:AutoIncrement="true" type="xs:int"/>
+<xs:element name="first_name">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="25"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="last_name">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="25"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="department_id" type="xs:int" minOccurs="0"/>
+<xs:element name="phone" minOccurs="0">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element name="admission_date" type="xs:dateTime"/>
+<xs:element name="cet_marks" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+<xs:unique name="Constraint1" msdata:PrimaryKey="true">
+<xs:selector xpath=".//students"/>
+<xs:field xpath="roll_num"/>
+</xs:unique>
+</xs:element>
+</xs:schema>
+<diffgr:diffgram>
+<DocumentElement>
+<students diffgr:id="students1" msdata:rowOrder="0">
+<roll_num>170101</roll_num>
+<first_name>Vinod</first_name>
+<last_name>Kamat</last_name>
+<department_id>1</department_id>
+<phone>7474986413</phone>
+<admission_date>2017-08-01T00:00:00+02:00</admission_date>
+<cet_marks>107</cet_marks>
+</students>
+</DocumentElement>
+</diffgr:diffgram>
+</DataTable>
