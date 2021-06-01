@@ -1,3 +1,3 @@
-<p>Hello there <?php echo $first_name . ' ' . $last_name; ?>!<p>
+<p>Pocetna stranica projekta (MVC Zadaca)!<p>
 
-<p>You successfully landed on the home page. Congrats!</p>
+<p>Na izborniku imamo 3 razlicita modela sa CRUD operacijama.</p>

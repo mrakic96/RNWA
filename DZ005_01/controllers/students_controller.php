@@ -30,6 +30,27 @@
         return call('students', 'index');
     }
 
+    public function edit(){
+        
+        if (!isset($_GET['roll_num']))
+              return call('pages', 'error');
+
+        $student = Students::find($_GET['roll_num']);
+
+        require_once('views/students/edit.php');
+    }
+
+    public function update(){
+      
+        if (!isset($_POST['roll_num']))
+            return call('pages', 'error');
+
+        Students::update($_POST['roll_num'],$_POST['first_name'],$_POST['last_name'],$_POST['phone'],$_POST['cet_marks']);
+
+        return call('students', 'index');
+    }
+
+
     public function delete() {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database

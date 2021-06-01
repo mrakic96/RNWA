@@ -1,12 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create department</title>
-
-</head>
-<body>
 <p>Create a new department:</p>
 
 
@@ -21,5 +13,3 @@
 	    <input type="submit" class="btn btn-primary" value="Submit">
 	 	<a href='?controller=departments&action=index' class="btn btn-default">Back to index page</a>
 	 </form>
-</body>
-</html>

@@ -78,6 +78,15 @@
       $db->query($sql);
       // return $sql;
     }
+
+    public static function update($id, $student_roll_num, $subject_id, $marks) {
+      $db = Db::getInstance();
+      $id = intval($id);
+      $student_roll_num = intval($student_roll_num);
+      $subject_id = intval($subject_id);
+      $sql="UPDATE marks SET student_roll_num = '$student_roll_num', subject_id='$subject_id', marks = '$marks' WHERE id = '$id'";
+      $db->query($sql);
+    }
     
     public static function delete($id) {
       $db = Db::getInstance();

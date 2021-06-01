@@ -30,6 +30,26 @@
         return call('departments', 'index');
     }
 
+    public function edit(){
+        
+        if (!isset($_GET['id']))
+              return call('pages', 'error');
+
+        $department = Departments::find($_GET['id']);
+
+        require_once('views/departments/edit.php');
+    }
+
+    public function update(){
+      
+        if (!isset($_POST['id']))
+            return call('pages', 'error');
+
+        Departments::update($_POST['id'],$_POST['name']);
+
+        return call('departments', 'index');
+    }
+
     public function delete() {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database

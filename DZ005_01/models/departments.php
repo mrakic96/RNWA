@@ -45,6 +45,13 @@
       // return $sql;
     }
 
+    public static function update($id, $name) {
+      $db = Db::getInstance();
+      $id = intval($id);
+      $sql="UPDATE departments SET name = '$name' WHERE id = '$id'";
+      $db->query($sql);
+    }
+
     public static function delete($id) {
       $db = Db::getInstance();
       

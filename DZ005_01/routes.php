@@ -26,9 +26,9 @@
 
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' 		=> ['home', 'error'],
-                       'marks' 		=> ['index', 'show', 'insert', 'create', 'delete'],
-                       'students' => ['index', 'show', 'create', 'insert', 'delete'],
-					             'departments' => ['index', 'show', 'create', 'insert', 'delete']);
+                       'marks' 		=> ['index', 'show', 'insert', 'create', 'edit', 'update', 'delete'],
+                       'students' => ['index', 'show', 'create', 'insert', 'edit', 'update', 'delete'],
+					             'departments' => ['index', 'show', 'create', 'insert', 'edit', 'update', 'delete']);
 
   if (array_key_exists($controller, $controllers)) { 
     if (in_array($action, $controllers[$controller])) {

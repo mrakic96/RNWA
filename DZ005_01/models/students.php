@@ -56,6 +56,15 @@
       // return $sql;
     }
 
+    public static function update($roll_num, $first_name, $last_name, $phone, $cet_marks) {
+      $db = Db::getInstance();
+      $roll_num = intval($roll_num);
+      $cet_marks = intval($cet_marks);
+      $sql="UPDATE students SET first_name = '$first_name', last_name='$last_name', phone = '$phone', cet_marks = $cet_marks
+       WHERE roll_num = '$roll_num'";
+      $db->query($sql);
+    }
+
     public static function delete($id) {
       $db = Db::getInstance();
       

@@ -1,12 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create mark</title>
-
-</head>
-<body>
 <p>Create a new mark:</p>
 
 
@@ -42,5 +34,3 @@
 	    <input type="submit" class="btn btn-primary" value="Submit">
 	 	<a href='?controller=marks&action=index' class="btn btn-default">Back to index page</a>
 	 </form>
-</body>
-	 </html>

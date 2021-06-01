@@ -13,7 +13,7 @@
         return call('pages', 'error');
 
       // we use the given id to get the right post
-      $marks = Marks::find($_GET['id']);
+      $mark = Marks::find($_GET['id']);
       require_once('views/marks/show.php');
     }
 
@@ -31,6 +31,26 @@
         // require_once('views/marks/displaymsg.php');
         return call('marks', 'index');
         // require_once('views/marks/index.php');
+    }
+
+    public function edit(){
+        
+        if (!isset($_GET['id']))
+              return call('pages', 'error');
+
+        $mark = Marks::find($_GET['id']);
+
+        require_once('views/marks/edit.php');
+    }
+
+    public function update(){
+      
+        if (!isset($_POST['id']))
+            return call('pages', 'error');
+
+        Marks::update($_POST['id'],$_POST['student_roll_num'],$_POST['subject_id'],$_POST['marks']);
+
+        return call('marks', 'index');
     }
 
     public function delete() {
