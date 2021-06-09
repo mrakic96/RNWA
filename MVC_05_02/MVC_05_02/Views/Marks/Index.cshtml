@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVC_05_02.Models.Mark>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nova ocjena</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Marks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentRollNumNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentRollNumNavigation.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Promijeni</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
