@@ -1,0 +1,109 @@
+* {
+	box-sizing: border-box
+}
+
+body{
+	padding: 0;
+	margin: 0 0 60px;
+	font-family: 'Roboto', sans-serif;
+	
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+	text-align:center;
+}
+#footer{
+	position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
+#header{
+	background-color: #ededed;
+	padding: 15px 30px;
+	display: flex;
+	align-items: center;
+}
+#toggle{
+	display: none;
+}
+#header {
+	position: relative;
+	left: 0;
+	
+	transition: 0.3s all;
+}
+#content{
+	position: relative;
+	left: 0;
+	transition: 0.3s all;
+	padding: 30px;
+}
+#menu{
+	position:fixed;
+	left: -240px;
+	top:0;
+	bottom: 0;
+	width: 240px;
+	background-color: #1c3a58;
+	transition: 0.3s left;
+}
+#menu ul{
+	bottom: 0;
+	top: 0;
+	padding: 0;
+	margin : 0;
+	list-style: none;
+}
+
+#menu > ul > li > a{
+	text-decoration: none;
+	display: block;
+	top:0;
+	padding: 15px 20px;
+	color: #fff
+}
+#menu>ul>li>a:hover{
+	background-color: #0f2944;
+}
+
+#toggle:checked~#header{
+	left: 240px;
+}	
+#toggle:checked~#content{
+	left: 240px;
+}
+@media only screen and (max-device-width : 640px){
+#toggle:checked~footer{
+	left: 150px;
+}
+}
+#toggle:checked~#menu{
+	left: 0;
+}
+#toggle:checked~#header,
+#toggle:checked~#content,
+#toggle:checked~footer,
+{
+	width: calc(100% - 240px);
+}	
+label[for=toggle]{
+	cursor:pointer;
+	display: flex;
+	height:30px;
+	flex-direction: column;
+	justify-content:space-between;
+}
+
+label[for=toggle] span{
+	display: block;
+	height: 4px;
+	width:30px;
+	border-radius: 2px;
+	background-color: #6c6c6c;
+}
